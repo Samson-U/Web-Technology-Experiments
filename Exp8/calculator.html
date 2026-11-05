@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #e0f2fe;
+            margin: 0;
+            padding: 50px 15px;
+        }
+        .box {
+            max-width: 350px;
+            margin: auto;
+            padding: 25px;
+            text-align: center;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 18px #b8d4e5;
+        }
+        h2 { color: #0369a1; }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            border: 1px solid #cbd5e1;
+            border-radius: 7px;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e0f2fe;
+            border-radius: 8px;
+            color: #075985;
+        }
+    </style>
+</head>
+
+<body ng-app="calcApp" ng-controller="calcCtrl">
+
+    <div class="box">
+        <h2>Calculator</h2>
+        <p>Perform basic calculations</p>
+
+        <input type="number" ng-model="a"
+               placeholder="Enter first number">
+
+        <select ng-model="op">
+            <option value="+">Addition (+)</option>
+            <option value="-">Subtraction (-)</option>
+            <option value="*">Multiplication (*)</option>
+            <option value="/">Division (/)</option>
+        </select>
+
+        <input type="number" ng-model="b"
+               placeholder="Enter second number">
+
+        <div class="result">
+            <strong>Result</strong>
+            <h2>{{calculate()}}</h2>
+        </div>
+    </div>
+
+    <script>
+        var app = angular.module("calcApp", []);
+
+        app.controller("calcCtrl", function($scope) {
+            $scope.calculate = function() {
+                var a = Number($scope.a) || 0;
+                var b = Number($scope.b) || 0;
+
+                if ($scope.op == "+") return a + b;
+                if ($scope.op == "-") return a - b;
+                if ($scope.op == "*") return a * b;
+                if ($scope.op == "/")
+                    return b != 0 ? a / b : "Cannot divide by zero";
+            };
+        });
+    </script>
+
+</body>
+</html>

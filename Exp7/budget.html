@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Budget Planner</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body { font-family: Arial; text-align: center; }
+        h2 { background: navy; color: white; padding: 12px; }
+        input { width: 80px; margin: 8px; padding: 5px; }
+        button { background: navy; color: white; padding: 10px; }
+        .box { display: inline-block; padding: 12px; margin: 5px; color: white; }
+    </style>
+</head>
+<body>
+
+<h2>Smart Budget Planner</h2>
+
+<h3>Monthly Budget (Rs.)</h3>
+<input type="number" id="amount" value="20000">
+
+<h3>Divide Your Money (%)</h3>
+Rent: <input type="number" id="rent" value="40"><br>
+Food: <input type="number" id="food" value="30"><br>
+Travel: <input type="number" id="travel" value="20"><br>
+Entertainment: <input type="number" id="fun" value="10"><br><br>
+
+<button id="calculate">Calculate Budget</button>
+
+<div id="result"></div>
+
+<script>
+$(document).ready(function() {
+    $("#calculate").click(function() {
+        let amount = Number($("#amount").val());
+        let r = Number($("#rent").val());
+        let f = Number($("#food").val());
+        let t = Number($("#travel").val());
+        let e = Number($("#fun").val());
+
+        if (amount <= 0 || r < 0 || f < 0 || t < 0 || e < 0 ||
+            r + f + t + e != 100) {
+            alert("Enter a valid amount and percentages totaling 100!");
+            return;
+        }
+
+        $("#result").html(
+            "<p class='box' style='background:blue'>Rent: Rs." +
+            amount*r/100 + "</p>" +
+            "<p class='box' style='background:green'>Food: Rs." +
+            amount*f/100 + "</p>" +
+            "<p class='box' style='background:orange'>Travel: Rs." +
+            amount*t/100 + "</p>" +
+            "<p class='box' style='background:purple'>Fun: Rs." +
+            amount*e/100 + "</p>"
+        );
+    });
+});
+</script>
+
+</body>
+</html>

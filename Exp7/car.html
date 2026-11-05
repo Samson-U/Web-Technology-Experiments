@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Workshop</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body { text-align: center; font-family: Arial; }
+        h2 { color: blue; }
+
+        #car {
+            width: 200px;
+            height: 60px;
+            background: red;
+            margin: 100px auto 50px;
+            position: relative;
+            border-radius: 15px;
+        }
+
+        #window {
+            width: 90px;
+            height: 35px;
+            background: lightblue;
+            position: absolute;
+            top: -30px;
+            left: 55px;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .wheel {
+            width: 40px;
+            height: 40px;
+            background: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 40px;
+        }
+
+        #w1 { left: 20px; }
+        #w2 { right: 20px; }
+
+        button { margin: 8px; padding: 8px; }
+    </style>
+</head>
+<body>
+
+<h2>Custom Car Workshop</h2>
+
+<div id="car">
+    <div id="window"></div>
+    <div class="wheel" id="w1"></div>
+    <div class="wheel" id="w2"></div>
+</div>
+
+<button id="red">Red</button>
+<button id="blue">Blue</button>
+<button id="black">Black</button>
+<br>
+<button id="tint">Change Window Tint</button>
+<button id="bigger">Bigger Wheels</button>
+<button id="reset">Reset</button>
+
+<script>
+$(document).ready(function() {
+    let size = 40;
+
+    $("#red").click(function() {
+        $("#car").css("background", "red");
+    });
+
+    $("#blue").click(function() {
+        $("#car").css("background", "blue");
+    });
+
+    $("#black").click(function() {
+        $("#car").css("background", "black");
+    });
+
+    $("#tint").click(function() {
+        $("#window").css("background", "gray");
+    });
+
+    $("#bigger").click(function() {
+        if (size < 70) {
+            size = size + 10;
+            $(".wheel").css({
+                "width": size + "px",
+                "height": size + "px"
+            });
+        }
+    });
+
+    $("#reset").click(function() {
+        size = 40;
+        $("#car").css("background", "red");
+        $("#window").css("background", "lightblue");
+        $(".wheel").css({
+            "width": "40px",
+            "height": "40px"
+        });
+    });
+});
+</script>
+
+</body>
+</html>

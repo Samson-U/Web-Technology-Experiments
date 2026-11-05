@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Experiment 6 - JavaScript Timer Functions and Arrays</title>
+</head>
+<body>
+
+    <h2>1. Digital Clock</h2>
+    <h3 id="time"></h3>
+
+    <hr>
+
+    <h2>2. Dynamic Background Colour</h2>
+    <p>Background colour changes every 30 seconds.</p>
+    <button onclick="setBackgroundColor()">Change Colour</button>
+
+    <hr>
+
+    <h2>3. Change Font Size</h2>
+    <p id="para1" onmouseover="incSize()" onmouseout="decSize()">
+        Move the cursor over me to zoom in.
+    </p>
+
+    <hr>
+
+    <h2>4. Move and Stop the Car</h2>
+    <img id="car" src="car.png" width="100"
+         style="position:relative; left:0px;">
+    <br><br>
+    <button onclick="moveRight()">Move</button>
+    <button onclick="stopCar()">Stop</button>
+
+    <hr>
+
+    
+    <h2>5. Student Details</h2>
+    Name: <input type="text" id="name"><br><br>
+    Register Number: <input type="text" id="regno"><br><br>
+    Year of Birth: <input type="number" id="year"><br><br>
+    <button onclick="addStudent()">Add Student</button>
+    <div id="result"></div>
+
+    <script>
+        // Question 1: Digital Clock
+        function display() {
+            var d = new Date();
+            document.getElementById("time").innerHTML =
+                d.getHours() + ":" +
+                d.getMinutes() + ":" +
+                d.getSeconds();
+        }
+
+        setInterval(display, 1000);
+        display();
+
+
+        // Question 2: Dynamic Background Colour
+        function setBackgroundColor() {
+            var red = Math.floor(Math.random() * 256);
+            var green = Math.floor(Math.random() * 256);
+            var blue = Math.floor(Math.random() * 256);
+
+            document.body.style.backgroundColor =
+                "rgb(" + red + "," + green + "," + blue + ")";
+        }
+
+        setInterval(setBackgroundColor, 30000);
+
+
+        // Question 3: Change Font Size
+        function incSize() {
+            document.getElementById("para1").style.fontSize = "28px";
+        }
+
+        function decSize() {
+            document.getElementById("para1").style.fontSize = "16px";
+        }
+
+
+        // Question 4: Move and Stop the Car
+        var position = 0;
+        var timer;
+
+        function moveRight() {
+            clearInterval(timer);
+
+            timer = setInterval(function() {
+                position += 5;
+                document.getElementById("car").style.left =
+                    position + "px";
+            }, 50);
+        }
+
+        function stopCar() {
+            clearInterval(timer);
+        }
+
+
+        // Question 5: Array of Student Objects
+       
+        var students = [];
+
+        function addStudent() {
+            var name = document.getElementById("name").value;
+            var regno = document.getElementById("regno").value;
+            var year = Number(document.getElementById("year").value);
+
+            students.push({
+                name: name,
+                regno: regno,
+                year: year
+            });
+
+            var output = "";
+
+            for (var i = 0; i < students.length; i++) {
+                output += students[i].name +
+                    "'s Register Number is " + students[i].regno + "<br>";
+
+                if (students[i].year < 2000) {
+                    output += "Born before 2000<br><br>";
+                } else {
+                    output += "Born in or after 2000<br><br>";
+                }
+            }
+
+            document.getElementById("result").innerHTML = output;
+        }
+
+    </script>
+
+</body>
+</html>

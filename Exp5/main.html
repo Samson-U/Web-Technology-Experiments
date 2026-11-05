@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript DOM Elements and Events</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 30px;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .box {
+            background-color: white;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+        }
+
+        button {
+            padding: 8px 15px;
+        }
+
+        input, select {
+            padding: 5px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>JavaScript DOM Elements and Events</h1>
+
+
+<div class="box">
+    <h2>1. Shortest and Longest Word</h2>
+
+    Enter String:
+    <input type="text" id="text">
+
+    <button onclick="findWords()">Find</button>
+
+    <p id="wordResult"></p>
+</div>
+
+
+<div class="box">
+    <h2>2. BMI Calculator</h2>
+
+    Weight (kg):
+    <input type="text" id="weight"><br>
+
+    Height (m):
+    <input type="text" id="height"><br>
+
+    <button onclick="calculateBMI()">Get BMI</button>
+
+    <p>Your BMI: <span id="score"></span></p>
+
+    <p>Body Type: <span id="type"></span></p>
+</div>
+
+
+<div class="box">
+    <h2>3. Fruit Farm</h2>
+
+    Rows:
+    <input type="text" id="rows">
+
+    Columns:
+    <input type="text" id="columns">
+
+    <button onclick="grow()">Plant Garden</button>
+
+    <div id="garden"></div>
+</div>
+
+
+<div class="box">
+    <h2>4. Currency Convertor</h2>
+
+    Convert
+    <input type="text" id="data">
+
+    <select id="from">
+        <option>Indian Rupee</option>
+        <option>US Dollar</option>
+    </select>
+
+    to
+
+    <select id="to">
+        <option>US Dollar</option>
+        <option>Indian Rupee</option>
+    </select>
+
+    <button onclick="convert()">Calculate</button>
+
+    <p>Answer: <span id="answer"></span></p>
+</div>
+
+
+<div class="box">
+    <h2>5. Coin Flip</h2>
+
+    <img src="heads.png" id="coin"
+         width="120" height="120"><br><br>
+
+    <button id="flip">Flip!</button>
+
+    <p>
+        Heads Total:
+        <span id="num_heads">0</span>
+        <br>
+
+        Tails Total:
+        <span id="num_tails">0</span>
+    </p>
+</div>
+
+
+<div class="box">
+    <h2>6. Birthday Cake Order Form</h2>
+
+    1/2kg Cakes:
+    <input type="text" id="small"><br>
+
+    1kg Cakes:
+    <input type="text" id="medium"><br>
+
+    2kg Cakes:
+    <input type="text" id="large"><br><br>
+
+    Tip:
+
+    <input type="radio" value="10" name="tip">10%
+
+    <input type="radio" value="15" name="tip" checked>15%
+
+    <input type="radio" value="20" name="tip">20%
+
+    <br><br>
+
+    <button id="submit">Calculate Order</button>
+
+    <p>
+        Cost of Order: Rs.
+        <span id="price"></span>
+    </p>
+</div>
+
+
+<!-- External JavaScript -->
+<script src="script.js"></script>
+
+</body>
+</html>

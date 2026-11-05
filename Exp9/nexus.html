@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app="spaceApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS | Space Exploration</title>
+
+    <link rel="stylesheet" href="nexus.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">✦ NEXUS</div>
+        <nav>
+            <a href="#!/">Home</a>
+            <a href="#!/planets">Planets</a>
+            <a href="#!/missions">Missions</a>
+            <a href="#!/contact">Contact</a>
+        </nav>
+    </header>
+
+    <div ng-view></div>
+
+    <footer>
+        ✦ NEXUS SPACE EXPLORATION | Beyond the Unknown
+    </footer>
+
+    <script>
+        var app = angular.module("spaceApp", ["ngRoute"]);
+
+        app.config(function($routeProvider) {
+            $routeProvider
+            .when("/", {
+                template: `
+                    <section class="hero">
+                        <h1>Explore the <span>Unknown.</span></h1>
+                        <p>
+                            The universe is full of mysteries waiting to be discovered.
+                            Start your journey through planets, galaxies and space missions.
+                        </p>
+                        <a href="#!/planets" class="btn">Begin Exploration →</a>
+                    </section>
+
+                    <div class="content">
+                        <h2 class="heading">YOUR UNIVERSE, YOUR JOURNEY</h2>
+                        <div class="grid">
+                            <div class="card">
+                                <div class="planet">🪐</div>
+                                <h3>Discover Planets</h3>
+                                <p>Travel across our solar system and discover fascinating worlds.</p>
+                            </div>
+                            <div class="card">
+                                <div class="planet">🚀</div>
+                                <h3>Space Missions</h3>
+                                <p>Explore missions that expand humanity's knowledge of space.</p>
+                            </div>
+                            <div class="card">
+                                <div class="planet">🌌</div>
+                                <h3>Explore Galaxies</h3>
+                                <p>Imagine distant galaxies and wonders beyond our world.</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            })
+            .when("/planets", {
+                template: `
+                    <div class="content">
+                        <h2 class="heading">PLANET DATABASE</h2>
+                        <div class="grid">
+                            <div class="card">
+                                <div class="planet">🔴</div>
+                                <h3>Mars</h3>
+                                <span class="tag">The Red Planet</span>
+                                <p>Known for its reddish surface, giant volcanoes and evidence of ancient water.</p>
+                            </div>
+                            <div class="card">
+                                <div class="planet">🪐</div>
+                                <h3>Saturn</h3>
+                                <span class="tag">The Ringed Planet</span>
+                                <p>A gas giant famous for its spectacular rings made mostly of ice and rock.</p>
+                            </div>
+                            <div class="card">
+                                <div class="planet">🔵</div>
+                                <h3>Neptune</h3>
+                                <span class="tag">The Distant World</span>
+                                <p>An icy giant known for its blue appearance and powerful winds.</p>
+                            </div>
+                            <div class="card">
+                                <div class="planet">🌍</div>
+                                <h3>Earth</h3>
+                                <span class="tag">Our Home</span>
+                                <p>Our home planet, with liquid water and a rich variety of life.</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            })
+            .when("/missions", {
+                template: `
+                    <div class="content">
+                        <h2 class="heading">MISSION CONTROL</h2>
+                        <div class="grid">
+                            <div class="card">
+                                <div class="planet">🚀</div>
+                                <h3>Artemis</h3>
+                                <span class="tag">Moon Exploration</span>
+                                <p>NASA's program aims to return astronauts to the Moon and prepare for future exploration.</p>
+                            </div>
+                            <div class="card">
+                                <div class="planet">🔴</div>
+                                <h3>Mars Rovers</h3>
+                                <span class="tag">Robotic Exploration</span>
+                                <p>Robotic explorers study Martian rocks, climate and evidence of ancient life.</p>
+                            </div>
+                            <div class="card">
+                                <div class="planet">🛰️</div>
+                                <h3>Voyager</h3>
+                                <span class="tag">Deep Space</span>
+                                <p>The Voyager spacecraft explore the outer Solar System and interstellar space.</p>
+                            </div>
+                        </div>
+                    </div>
+                `
+            })
+            .when("/contact", {
+                template: `
+                    <div class="content">
+                        <h2 class="heading">CONTACT MISSION CONTROL</h2>
+                        <div class="contact">
+                            <p>Have a question about the universe? Send us a message.</p>
+
+                            <form ng-submit="sent = true">
+                                <label>Your Name</label>
+                                <input type="text" ng-model="name"
+                                       placeholder="Enter your name" required>
+
+                                <label>Email Address</label>
+                                <input type="email" ng-model="email"
+                                       placeholder="you@example.com" required>
+
+                                <label>Area of Interest</label>
+                                <select ng-model="interest" required>
+                                    <option value="">Choose a topic</option>
+                                    <option>Planets</option>
+                                    <option>Space Missions</option>
+                                    <option>Galaxies</option>
+                                </select>
+
+                                <label>Your Message</label>
+                                <textarea ng-model="message" rows="4"
+                                          placeholder="Write your message" required></textarea>
+
+                                <button type="submit">Transmit Message ↗</button>
+
+                                <p class="success" ng-if="sent">
+                                    ✓ Message transmitted successfully!
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                `
+            })
+            .otherwise({
+                redirectTo: "/"
+            });
+        });
+    </script>
+</body>
+</html>

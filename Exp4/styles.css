@@ -1,0 +1,177 @@
+body{
+
+    margin:0;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    text-align:center;
+
+    background-image:
+    url("controller.png"),
+    linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+
+    background-repeat:no-repeat,no-repeat;
+    background-position:right bottom,center;
+    background-size:220px,cover;
+
+    color:white;
+}
+
+header{
+
+    padding:30px;
+}
+
+h1{
+
+    font-size:45px;
+    text-shadow:3px 3px 10px cyan;
+}
+
+.tagline{
+
+    color:#ddd;
+    font-size:18px;
+}
+
+.box{
+
+    width:70%;
+    margin:auto;
+    padding:25px;
+
+    background:rgba(255,255,255,0.1);
+
+    border-radius:30px;
+
+    border:12px solid transparent;
+    border-image:url(border.png) 30 round;
+
+    box-shadow:0 0 20px cyan;
+
+    backdrop-filter:blur(5px);
+}
+
+button{
+
+    padding:12px 25px;
+    margin-top:15px;
+    background:#00e5ff;
+    border:none;
+    border-radius:20px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+}
+
+button:hover{
+
+    background:#00ff88;
+}
+
+.title{
+
+    margin-top:40px;
+    text-shadow:2px 2px 6px yellow;
+}
+
+form{
+
+    width:350px;
+    margin:auto;
+
+    padding:25px;
+
+    background:rgba(255,255,255,0.12);
+
+    border-radius:20px;
+
+    box-shadow:0 0 15px black;
+}
+
+input{
+
+    width:90%;
+    padding:10px;
+    border-radius:10px;
+    border:none;
+}
+
+input:focus{
+
+    border:3px solid red;
+    background:lightgreen;
+}
+
+input:required{
+
+    border:3px solid blue;
+    background:lightyellow;
+}
+
+input[type=email]:valid{
+
+    color:blue;
+}
+
+input[type=email]:invalid{
+
+    color:red;
+}
+
+table{
+
+    width:70%;
+    margin:30px auto;
+    border-collapse:collapse;
+}
+
+th{
+
+    background:#00bcd4;
+    color:black;
+}
+
+th,td{
+
+    padding:12px;
+    border:2px solid white;
+}
+
+tr:nth-child(odd){
+
+    background:#34495e;
+}
+
+tr:nth-child(even){
+
+    background:#2c3e50;
+}
+
+tr:hover{
+
+    background:#16a085;
+}
+
+img{
+
+    width:180px;
+    height:100px;
+    border-radius:15px;
+}
+
+.itemImg{
+
+    opacity:0.3;
+    transition:0.5s;
+}
+
+.itemName:hover + .itemImg{
+
+    opacity:1;
+}
+
+footer{
+
+    margin-top:40px;
+    padding:20px;
+    background:black;
+}

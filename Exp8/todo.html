@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #ecfdf5;
+            margin: 0;
+            padding: 45px 15px;
+        }
+        .box {
+            max-width: 450px;
+            margin: auto;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 18px #c5e5d5;
+        }
+        h2 { color: #047857; }
+        .entry {
+            display: flex;
+            gap: 8px;
+        }
+        input {
+            flex: 1;
+            min-width: 0;
+            padding: 11px;
+            border: 1px solid #cbd5e1;
+            border-radius: 7px;
+        }
+        button {
+            padding: 10px 15px;
+            background: #059669;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+        li {
+            background: #f0fdf4;
+            padding: 12px;
+            margin: 9px 0;
+            border-radius: 7px;
+            overflow-wrap: anywhere;
+        }
+    </style>
+</head>
+
+<body ng-app="todoApp" ng-controller="todoCtrl">
+
+    <div class="box">
+        <h2>My To-Do List</h2>
+        <p>Organize your daily tasks.</p>
+
+        <div class="entry">
+            <input type="text" ng-model="task"
+                   placeholder="Enter a task">
+            <button ng-click="add()">Add</button>
+        </div>
+
+        <h3>My Tasks ({{tasks.length}})</h3>
+
+        <p ng-if="tasks.length == 0">No tasks added yet.</p>
+
+        <ul>
+            <li ng-repeat="t in tasks">{{t}}</li>
+        </ul>
+    </div>
+
+    <script>
+        var app = angular.module("todoApp", []);
+
+        app.controller("todoCtrl", function($scope) {
+            $scope.tasks = [];
+
+            $scope.add = function() {
+                if ($scope.task && $scope.task.trim()) {
+                    $scope.tasks.push($scope.task);
+                    $scope.task = "";
+                }
+            };
+        });
+    </script>
+
+</body>
+</html>

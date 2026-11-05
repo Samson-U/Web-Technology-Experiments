@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pizza Shop</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body { font-family: Arial; text-align: center; }
+        h2 { background: darkred; color: white; padding: 12px; }
+        input { width: 100px; padding: 5px; }
+        button { background: darkred; color: white; padding: 10px; }
+        p { margin: 20px; }
+        #total { color: green; font-size: 24px; }
+    </style>
+</head>
+<body>
+
+<h2>PIZZA CORNER</h2>
+
+<div>
+    <img src="Margherita.png" width="120" height="100">
+    <img src="Cheese.png" width="120" height="100">
+    <img src="Farmhouse.png" width="120" height="100">
+    <img src="Paneer.png" width="120" height="100">
+</div>
+
+<h3>Order Your Pizza</h3>
+
+<p>Margherita Pizza - Rs.150
+<input type="number" id="p1" value="0" min="0"></p>
+
+<p>Cheese Pizza - Rs.200
+<input type="number" id="p2" value="0" min="0"></p>
+
+<p>Farmhouse Pizza - Rs.250
+<input type="number" id="p3" value="0" min="0"></p>
+
+<p>Pepperoni Pizza - Rs.220
+<input type="number" id="p4" value="0" min="0"></p>
+
+<button id="order">Place Order</button>
+
+<h3>Your Total Bill</h3>
+<h2 id="total">Rs.0</h2>
+
+<script>
+$(document).ready(function() {
+    $("#order").click(function() {
+        let a = Number($("#p1").val());
+        let b = Number($("#p2").val());
+        let c = Number($("#p3").val());
+        let d = Number($("#p4").val());
+
+        if (a < 0 || b < 0 || c < 0 || d < 0 ||
+            !Number.isInteger(a) || !Number.isInteger(b) ||
+            !Number.isInteger(c) || !Number.isInteger(d)) {
+            alert("Enter valid quantities!");
+            return;
+        }
+
+        let total = a*150 + b*200 + c*250 + d*220;
+
+        $("#total").text("Rs." + total);
+    });
+});
+</script>
+
+</body>
+</html>
